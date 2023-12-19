@@ -4,6 +4,7 @@ setup(
     name='cansii',
     version='0.2',
     packages=['cansii'],
+    setup_requires=['wheel'],
     description='A Python library for terminal text colorization using ANSI escape codes.',
     author='Jakepys Perdomo',
     author_email='perdomojuan187@gmail.com',
