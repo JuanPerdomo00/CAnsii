@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='cansii',
-    version='1.1',
+    version='1.2',
     packages=['cansii'],
     setup_requires=['wheel'],
     description='A Python library for terminal text colorization using ANSI escape codes.',
