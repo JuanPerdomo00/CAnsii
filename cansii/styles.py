@@ -17,7 +17,7 @@
 
 
 __author__ = "Jakepys"
-__version__ = "1.0"
+__version__ = "1.1"
 
 
 import time
@@ -39,8 +39,8 @@ class CAnsii:
 
     @staticmethod
     def color_in_ascii(ascii: str, seg: float, *colors: tuple):
-         """
-         Applies different colors to each line of an ASCII art and displays them sequentially.
+        """
+        Applies different colors to each line of an ASCII art and displays them sequentially.
 
         Args:
             - ascii (str): ASCII art to be colorized.
