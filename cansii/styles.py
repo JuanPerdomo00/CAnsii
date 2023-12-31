@@ -17,7 +17,7 @@
 
 
 __author__ = "Jakepys"
-__version__ = "1.1"
+__version__ = "1.2"
 
 
 import time
@@ -27,18 +27,20 @@ class CAnsii:
     """
     A class that provides ANSI styles for terminal text.
     """
-    BLACK = 30
-    RED = 31
-    GREEN = 32
-    YELLOW = 33
-    BLUE = 34
-    MAGENTA = 35
-    CYAN = 36
-    WHITE = 37
+
+    BLACK =   '\033[30m'
+    RED =     '\033[31m'
+    GREEN =   '\033[32m'
+    YELLOW =  '\033[33m'
+    BLUE =    '\033[34m'
+    MAGENTA = '\033[35m'
+    CYAN =    '\033[36m'
+    WHITE =   '\033[37m'
+    RESET =   '\033[0m'
 
 
     @staticmethod
-    def color_in_ascii(ascii: str, seg: float, *colors: tuple):
+    def color_in_ascii(ascii: str, seg: float, colors: tuple):
         """
         Applies different colors to each line of an ASCII art and displays them sequentially.
 
@@ -48,7 +50,7 @@ class CAnsii:
             - *colors (tuple): Tuple containing ANSI color codes.
 
         Example usage:
-            CAnsii.color_in_ascii(ascii_art, 0.5, CAnsii.RED, CAnsii.GREEN, CAnsii.BLUE)
+            CAnsii.color_in_ascii(ascii_art, 0.5, (CAnsii...[colors]))
         """
         
         ascii_lines = ascii.split('\n')
@@ -56,10 +58,10 @@ class CAnsii:
         for color in colors:
             os.system('clear' if os.name == 'posix' else 'cls')
             for line in ascii_lines:
-                print(f'\033[{color}m{line}\033[0m')
+                print(f"{color}{line}{CAnsii.RESET}")
                 time.sleep(seg)
             print('\033[0m') # ->  reset all colors
-
+            
 
     @staticmethod
     def black(text: str) -> str:
