@@ -17,12 +17,49 @@
 
 
 __author__ = "Jakepys"
-__version__ = "0.2"
+__version__ = "1.0"
+
+
+import time
+import os
 
 class CAnsii:
     """
     A class that provides ANSI styles for terminal text.
     """
+    BLACK = 30
+    RED = 31
+    GREEN = 32
+    YELLOW = 33
+    BLUE = 34
+    MAGENTA = 35
+    CYAN = 36
+    WHITE = 37
+
+
+    @staticmethod
+    def color_in_ascii(ascii: str, seg: float, *colors: tuple):
+         """
+         Applies different colors to each line of an ASCII art and displays them sequentially.
+
+        Args:
+            - ascii (str): ASCII art to be colorized.
+            - seg (float): Time delay between each color change.
+            - *colors (tuple): Tuple containing ANSI color codes.
+
+        Example usage:
+            CAnsii.color_in_ascii(ascii_art, 0.5, CAnsii.RED, CAnsii.GREEN, CAnsii.BLUE)
+        """
+        
+        ascii_lines = ascii.split('\n')
+
+        for color in colors:
+            os.system('clear' if os.name == 'posix' else 'cls')
+            for line in ascii_lines:
+                print(f'\033[{color}m{line}\033[0m')
+                time.sleep(seg)
+            print('\033[0m') # ->  reset all colors
+
 
     @staticmethod
     def black(text: str) -> str:
@@ -33,6 +70,7 @@ class CAnsii:
         """
         return f"\033[30m{text}\033[0m"
 
+
     @staticmethod
     def red(text: str) -> str:
         """
@@ -41,6 +79,7 @@ class CAnsii:
         :return: Formatted text with red ANSI style.
         """
         return f"\033[31m{text}\033[0m"
+
 
     @staticmethod
     def green(text: str) -> str:
@@ -51,6 +90,7 @@ class CAnsii:
         """
         return f"\033[32m{text}\033[0m"
 
+
     @staticmethod
     def yellow(text: str) -> str:
         """
@@ -59,6 +99,7 @@ class CAnsii:
         :return: Formatted text with yellow ANSI style.
         """
         return f"\033[33m{text}\033[0m"
+
 
     @staticmethod
     def blue(text: str) -> str:
@@ -69,6 +110,7 @@ class CAnsii:
         """
         return f"\033[34m{text}\033[0m"
 
+
     @staticmethod
     def magenta(text: str) -> str:
         """
@@ -77,6 +119,7 @@ class CAnsii:
         :return: Formatted text with magenta ANSI style.
         """
         return f"\033[35m{text}\033[0m"
+
 
     @staticmethod
     def cyan(text: str) -> str:
@@ -87,6 +130,7 @@ class CAnsii:
         """
         return f"\033[36m{text}\033[0m"
 
+
     @staticmethod
     def white(text: str) -> str:
         """
@@ -95,6 +139,7 @@ class CAnsii:
         :return: Formatted text with white ANSI style.
         """
         return f"\033[37m{text}\033[0m"
+
 
     # styles
 
@@ -107,6 +152,7 @@ class CAnsii:
         """
         return f"\033[1m{text}\033[0m"
 
+
     @staticmethod
     def underline(text: str) -> str:
         """
@@ -115,6 +161,7 @@ class CAnsii:
         :return: Formatted text with underline ANSI style.
         """
         return f"\033[4m{text}\033[0m"
+
 
     @staticmethod
     def italic(text: str) -> str:
@@ -125,6 +172,7 @@ class CAnsii:
         """
         return f"\033[3m{text}\033[0m"
 
+
     @staticmethod
     def strike(text: str) -> str:
         """
@@ -133,6 +181,7 @@ class CAnsii:
         :return: Formatted text with strike-through ANSI style.
         """
         return f"\033[9m{text}\033[0m"
+
 
     # Combinations
 
@@ -145,6 +194,7 @@ class CAnsii:
         """
         return f"\033[31;1m{text}\033[0m"
 
+
     @staticmethod
     def green_underline(text: str) -> str:
         """
@@ -153,6 +203,7 @@ class CAnsii:
         :return: Formatted text with green and underline ANSI styles.
         """
         return f"\033[32;4m{text}\033[0m"
+
 
     @staticmethod
     def yellow_italic(text: str) -> str:
